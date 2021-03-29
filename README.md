@@ -30,7 +30,7 @@ In that way, the new deck will have only an Ace of Spades, a King of Hearts, and
 
 This route returns a JSON containing the Deck UUID, if it's shuffled or not, and the total of cards remaining on it, like so:
 
-`localhost:8080/create`
+`localhost:8080/create?cards=AS,KH,8C`
 ```
 {
     "deck_id": "6d1e1342-81d7-4703-9c25-bda87b9ec30a",
