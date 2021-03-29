@@ -17,6 +17,10 @@ type Deck struct {
 
 var all_decks = []Deck{}
 
+/*
+	search and return a deck from the UUID
+	if not exists, return nil
+*/
 func getDeckFromUUID(uuid string) *Deck {
 	for _, deck := range all_decks {
 		if deck.Uuid == uuid {
@@ -26,11 +30,13 @@ func getDeckFromUUID(uuid string) *Deck {
 	return nil
 }
 
+// handles default error message for the API route
 func handleErrorMessage(message string, statusCode int, w *http.ResponseWriter) {
 	(*w).WriteHeader(statusCode)
 	(*w).Write([]byte(`{"message": "Error: ` + message + `"}`))
 }
 
+// route to creates a new deck
 func create(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method != "POST" {
@@ -63,6 +69,7 @@ func create(w http.ResponseWriter, r *http.Request) {
 		`, "remaining": ` + strconv.Itoa(len(*new_deck.Cards)) + `}`))
 }
 
+// route to open a new deck
 func open(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method != "GET" {
@@ -93,6 +100,7 @@ func open(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// route to draw {{amount}} cards from the deck
 func draw(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method != "POST" {
