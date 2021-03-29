@@ -71,7 +71,7 @@ This route returns a JSON containing the Deck UUID, if it's shuffled or not, the
 ``` 
 
 ### Draw a Card
-With the POST route `/draw/${deck_UUID}/${number_of_cards}`, you can draw the first N cards of this deck! 
+With the PUT route `/draw/${deck_UUID}/${number_of_cards}`, you can draw the first N cards of this deck! 
 
 This route returns a JSON containing the drawn cards from the Deck, like so:
 
