@@ -39,6 +39,7 @@ func handleErrorMessage(message string, statusCode int, w *http.ResponseWriter) 
 // route to creates a new deck
 func create(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	// only allows POST requests
 	if r.Method != "POST" {
 		handleErrorMessage("method not allowed", http.StatusInternalServerError, &w)
 		return
@@ -72,6 +73,7 @@ func create(w http.ResponseWriter, r *http.Request) {
 // route to open a new deck
 func open(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	// only allows GET requests
 	if r.Method != "GET" {
 		handleErrorMessage("method not allowed", http.StatusInternalServerError, &w)
 		return
@@ -103,7 +105,8 @@ func open(w http.ResponseWriter, r *http.Request) {
 // route to draw {{amount}} cards from the deck
 func draw(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	if r.Method != "POST" {
+	// only allows PUT requests
+	if r.Method != "PUT" {
 		handleErrorMessage("method not allowed", http.StatusInternalServerError, &w)
 		return
 	}
